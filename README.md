@@ -2,7 +2,8 @@
 
 Render Lit web components in SSG outputs using `@lit-labs/ssr`.
 
-> **⚠ WARNING: Experimental - no security or stability guarantees**
+> [!WARNING]
+> This project is experimental. There is no security or stability guarantees.
 
 ```sh
 npm install && npm run build
