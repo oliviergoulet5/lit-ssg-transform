@@ -1,5 +1,5 @@
 {
-  "name": "lit-ssg",
+  "name": "lit-ssg-transform",
   "version": "0.0.1",
   "description": "Render Lit web components in SSG outputs",
   "main": "cli.ts",
