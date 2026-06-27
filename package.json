@@ -24,7 +24,10 @@
     "typescript": "^7.0.1-rc"
   },
   "dependencies": {
+    "@lit-labs/ssr": "^4.1.0",
     "commander": "^15.0.0",
-    "fast-glob": "^3.3.3"
+    "fast-glob": "^3.3.3",
+    "linkedom": "^0.18.12",
+    "lit": "^3.3.3"
   }
 }

@@ -2,26 +2,33 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { crawl } from "./crawler.js";
+import { processFile } from "./parse.js";
+import { registerComponents } from "./components.js";
 
 export async function run(options: any) {
   const start = performance.now();
 
-  // Load config
   const config = await loadConfig(options.config);
-
-  // @todo: Merge CLI overrides
   const finalConfig = { ...config };
-  
-  // Find files
+
+  registerComponents();
+
   const files = await crawl(finalConfig.dir, {
     include: finalConfig.include,
     exclude: finalConfig.exclude,
   });
 
+  let totalRendered = 0;
+  for (const file of files) {
+    const result = await processFile(file);
+    totalRendered += result.rendered;
+  }
+
   const end = performance.now();
 
   console.log(`\n✔ Done`);
   console.log(`Files: ${files.length}`);
+  console.log(`Components rendered: ${totalRendered}`);
   console.log(`Time: ${(end - start).toFixed(0)}ms`);
 }
 
@@ -71,9 +78,9 @@ export async function loadConfig(configPath?: string) {
 }
 
 function getDefaultConfig() {
-  // Stubbed
   return {
     dir: "public",
-    include: ["**/*.html"]
+    include: ["**/*.html"],
+    outDir: "dist/public",
   };
 }
