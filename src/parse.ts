@@ -1,6 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { parseHTML } from "linkedom";
-import { html } from "lit";
 import type { TemplateResult } from "lit";
 import { render } from "@lit-labs/ssr";
 

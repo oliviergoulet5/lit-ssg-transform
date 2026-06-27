@@ -3,15 +3,12 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { crawl } from "./crawler.js";
 import { processFile } from "./parse.js";
-import { registerComponents } from "./components.js";
 
 export async function run(options: any) {
   const start = performance.now();
 
   const config = await loadConfig(options.config);
   const finalConfig = { ...config };
-
-  registerComponents();
 
   const files = await crawl(finalConfig.dir, {
     include: finalConfig.include,
@@ -81,6 +78,5 @@ function getDefaultConfig() {
   return {
     dir: "public",
     include: ["**/*.html"],
-    outDir: "dist/public",
   };
 }
