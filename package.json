@@ -1,0 +1,29 @@
+{
+  "name": "lit-ssg",
+  "version": "0.0.1",
+  "description": "Render Lit web components in SSG outputs",
+  "main": "cli.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node dist/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ssg",
+    "web",
+    "components",
+    "lit",
+    "lit-ssr"
+  ],
+  "author": "Olivier Goulet",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.0.1",
+    "typescript": "^7.0.1-rc"
+  },
+  "dependencies": {
+    "commander": "^15.0.0"
+  }
+}
