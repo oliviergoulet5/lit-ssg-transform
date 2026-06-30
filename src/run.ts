@@ -5,6 +5,7 @@ import { crawl } from "./crawler.js";
 import { processFile } from "./parse.js";
 
 export async function run(options: any) {
+  // Begin timing the run so we can later see how long it took to execute.
   const start = performance.now();
 
   const config = await loadConfig(options.config);
@@ -29,6 +30,7 @@ export async function run(options: any) {
   console.log(`Time: ${(end - start).toFixed(0)}ms`);
 }
 
+// These are all the supported config file names.
 const CONFIG_FILE_NAMES = [
   "lit-ssg.config.js",
   "lit-ssg.config.mjs",
@@ -44,7 +46,7 @@ export function resolveConfigPath(configPath?: string): string | undefined {
       return absolutePath;
     }
 
-    return undefined;
+    return;
   }
 
   for (const fileName of CONFIG_FILE_NAMES) {
@@ -54,7 +56,7 @@ export function resolveConfigPath(configPath?: string): string | undefined {
     }
   }
 
-  return undefined;
+  return;
 }
 
 export async function loadConfig(configPath?: string) {
